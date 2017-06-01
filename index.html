@@ -5,11 +5,39 @@
     <link rel="stylesheet" href="styles.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script type="text/javascript">
+      $(document).ready(function(){
+        $('img').click(function(){
+          var url = "https://www.anapioficeandfire.com/api/houses?name="+$(this).attr('alt');
+          $.get(url, function(data){
+            console.log(data);
+            var html_str = "";
+            html_str += "<h1>Name: "+data[0].name+"</h1>";
+            html_str += "<h1>Words: "+data[0].words+"</h1>";
+            html_str += "<h1>Titles: ";
 
+            for (var i = 0; i < data[0].titles.length; i++) {
+              if (i==(data[0].titles.length)-1) {
+                html_str += data[0].titles[i]+".";
+              } else{
+                html_str += data[0].titles[i]+", ";
+              }
+            }
+
+            html_str += "</h1>";
+            $('#houseInfo').html(html_str);
+          }, 'json');
+        })
+      })
     </script>
     <title>Game of Thrones</title>
   </head>
   <body>
-
+    <div id="banners">
+      <img src="images/stark-banner.png" alt="House Stark of Winterfell" class="banner" id="stark">
+      <img src="images/targaryen-banner.png" alt="House Targaryen of King's Landing" class="banner" id="targaryen">
+      <img src="images/lannister-banner.png" alt="House Lannister of Casterly Rock" class="banner" id="lannister">
+      <img src="images/baratheon-banner.png" alt="House Baratheon of Storm's End" class="banner" id="baratheon">
+    </div>
+    <div id="houseInfo"></div>
   </body>
 </html>

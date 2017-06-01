@@ -1,1 +1,26 @@
 /*CSS RESET*/
+*{
+  padding: 0;
+  margin: 0 auto;
+}
+body{
+  background-image: url("images/brick.jpg");
+}
+/*h1{
+  width: 60%;
+  text-align: center;
+  margin: 20px auto;
+}*/
+#banners{
+  width: 60%;
+  overflow: hidden;
+}
+.banner{
+  float: left;
+  width: 25%;
+}
+#houseInfo{
+  margin: 50px auto;
+  padding: 10px;
+  width: 60%;
+}
